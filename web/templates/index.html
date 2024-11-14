@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <form method="GET" class="mb-4">
+                <div class="form-group">
+                    {{ form }}
+                    <br>
+                </div>
+                <button type="submit" class="btn btn-success">Filtrar</button>
+            </form>
+        </div>
+        <div class="col-md-8 mt-4">
+            <table class="table table-bordered table-striped table-success">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <div class="text-center">Título</div>
+                      
+                    </th>
+                    <th scope="col">
+                      <div class="text-center">Plataforma</div>
+                      
+                    </th>
+                    <th scope="col">
+                      <div class="text-center">Género</div>
+                      
+                    </th><td></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for juego in juegos %}
+                  <tr>
+                      <td>{{ juego.titulo }}</td>
+                      <td>{{ juego.plataforma }}</td>
+                      <td>{{ juego.genero }}</td>
+                      <td>
+                          <a href="{% url 'arrendar' juego.id  %}" class="btn btn-info">Detalle</a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              </table>
+        </div>
+    
+        
+      
+    </div>
+  </div>
+{% endblock %}

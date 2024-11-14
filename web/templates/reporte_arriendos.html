@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <table class="table table-bordered table-striped table-success">
+      <thead>
+        <tr>
+          <th scope="col">
+            <div class="text-center">Arrendador</div>
+            
+          </th>
+          <th scope="col">
+            <div class="text-center">Juego</div>
+            
+          </th>
+          <th scope="col">
+            <div class="text-center">Fecha de Arriendo</div>
+            
+          </th>
+          <th scope="col">
+            <div class="text-center">Fecha de devolucion</div>
+            
+          </th>
+          <th scope="col">
+            <div class="text-center">Multa</div>
+            
+          </th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        {% for arriendo in arriendos %}
+        <tr>
+            <td>{{ arriendo.user.first_name }}</td>
+                    <td>{{ arriendo.juego.titulo }}</td>
+                    <td>{{ arriendo.fecha_arriendo |date:"d/m/Y"}}</td>
+                    <td>{{ arriendo.fecha_devolucion |date:"d/m/Y"}}</td>
+                    <td>${{ arriendo.multa }}</td>
+            
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+  
+  </div>
+{% endblock %}
